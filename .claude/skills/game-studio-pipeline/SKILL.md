@@ -23,7 +23,7 @@ the routing contract.
 1. EXECUTIVE   vision → pillars → greenlight (HITL)         The Director · Producer · Forgemaster
 2. DESIGN      systems · narrative · level · encounter · economy   The Systemsmith · Loremaster · Cartographer · Duelist · Economist
 3. TECHNICAL   tech design · runtime AI · netcode · tools    The Forgemaster · Puppeteer · Netweaver · Toolwright   ─delegate→ engineering
-4. CREATIVE    art bible · audio · animation                 The Artisan · Conductor · Choreographer               ─delegate→ garland
+4. CREATIVE    art bible · 3D/DCC · audio · animation         The Artisan · Sculptor · Conductor · Choreographer     ─delegate→ garland
 5. EVALUATION  QA · balance · playtest · live-ops · cert · security   The Warden · Playtester · Custodian · Arbiter · Sentinel
 ```
 
@@ -35,7 +35,7 @@ the routing contract.
 | `design` | Systemsmith, Loremaster, Cartographer, Duelist, Economist | game-perf-budget (forecast), loot-box-jurisdiction (if monetized) | monetization model |
 | `tech_design` | Forgemaster, Puppeteer, Netweaver | server-authority-fairplay (if online) | — |
 | `production` | (delegated) engineering + garland | — | content-lock |
-| `content` | Artisan, Conductor, Choreographer | ai-content-provenance | core-art-style lock |
+| `content` | Artisan, Sculptor, Conductor, Choreographer | ai-content-provenance, mesh-topology-budget (3D), rig-quality (rigs) | core-art-style lock |
 | `qa_balance` | Warden, Playtester | game-accessibility-guidelines, game-perf-budget | — |
 | `cert` | Arbiter | esrb-pegi-iarc-rating, platform-cert-readiness | cert submission |
 | `liveops` | Custodian, Economist | loot-box-jurisdiction (per-change) | live economy change |
@@ -78,11 +78,16 @@ ComfyUI/diffusion from the Arcade crown.
 ```yaml
 type: ASSET_JOB
 target_squad: garland
-model_type: diffusion            # diffusion | nerf | video_llm | tts | music
+model_type: diffusion            # diffusion | nerf | video_llm | tts | music | mesh | rig
 brief: "Boss concept — 'The Hollow King', see art_bible.md style refs"
 style_ref: art_bible.md
 provenance_required: true        # garland governance-c2pa signs it
 ```
+For 3D, The Sculptor emits `model_type: mesh` (props/env) or `model_type: rig`
+(skinned characters) with a `dcc_contract` payload (topology / UV / LOD / axis /
+export) — garland's `blender-model` / `blender-rig` execute it on the existing
+blender-mcp backend (see `game-3d-modeling-and-dcc`). Returned 3D passes
+`mesh-topology-budget`; rigs also pass `rig-quality` (`game-rigging-and-animation-pipeline`).
 
 ### → legal-compliance (IP / law)
 Emit a `HANDOFF` to `legal-compliance` (Senate/curia) for licensed-engine terms,

@@ -72,6 +72,14 @@ Using `game-engine-targets`, pin the concrete surface per target:
   custom export presets.
 - **Web (Babylon/Three/Phaser/PlayCanvas)** — bundler/asset pipeline,
   glTF/texture processing, build steps.
+- **DCC / Blender pipeline** — headless `bpy` batch processors and import/export
+  validators that ingest garland's 3D output: FBX/glTF/USD export presets per engine
+  (axis/scale per `game-3d-modeling-and-dcc`), mesh validation (n-gons, non-manifold,
+  unapplied transforms, tri/bone limits), LOD-generation hooks, and a CI asset-gate
+  enforcing `mesh-topology-budget` / `rig-quality`. The **existing blender-mcp**
+  backend (the one garland's blender-model/blender-rig drive) is the execution
+  surface these tools wrap — The Toolwright specs the validator/exporter contract;
+  engineering implements it.
 
 ### 4. Tool spec per item
 For each tool: purpose, exact input(s), deterministic output(s), where it lives

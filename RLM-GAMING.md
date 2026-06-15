@@ -70,8 +70,9 @@ for this crown). Additional gates: **The Warden** (QA/balance), **The Arbiter**
 | Plaza (slug) | Mythic | Authority | Tier | Charter |
 |---|---|---|---|---|
 | `art-director` | **The Artisan** | advisory | opus | Style bible, art direction, LOD/poly budgets. Emits `CREATIVE_BRIEF`/`ASSET_JOB` to Garland/Helios. |
+| `3d-modeling-director` | **The Sculptor** | advisory | opus | 3D geometry/topology standards, retopo/UV/PBR/LOD, pivot/scale/axis, the Blender/DCC commission contract. Commissions Garland `blender-model`/`blender-rig` (existing blender-mcp). Owns `mesh-topology-budget`. |
 | `audio-director` | **The Conductor** | advisory | sonnet | Adaptive audio, mix tiers, middleware (Wwise/FMOD). Emits `ASSET_JOB` to Garland audio sub-crew. |
-| `animation-director` | **The Choreographer** | advisory | sonnet | Rigs, IK, blend trees, anim state machines, root-motion decisions. |
+| `animation-director` | **The Choreographer** | advisory | sonnet | Rigs, IK, skinning/weight QC, blend trees, anim state machines, root-motion decisions. Owns `rig-quality`. |
 
 ### Evaluation layer
 | Plaza (slug) | Mythic | Authority | Tier | Charter |
@@ -160,7 +161,9 @@ human-readable game gate name goes in the request's `summary`/`detail`.
 | `esrb-pegi-iarc-rating` | The Arbiter | yes | before store submission |
 | `platform-cert-readiness` | The Arbiter | yes | `phase == 'cert'` |
 | `server-authority-fairplay` | The Sentinel | yes | `online == true` |
-| `ai-content-provenance` | The Artisan / The Sentinel | yes | any gen-AI asset shipped |
+| `ai-content-provenance` | The Artisan / The Sentinel | yes | any gen-AI asset shipped (incl. 3D meshes/rigs) |
+| `mesh-topology-budget` | The Sculptor | no | any returned 3D mesh (topology/poly/UV/LOD/axis-scale/export) |
+| `rig-quality` | The Choreographer | no | any returned rig/animation (hierarchy/weights/gimbal/export) |
 | `game-perf-budget` (pp rubric) | The Forgemaster | no | perf-tagged stages |
 | `game-accessibility-guidelines` (pp rubric) | The Warden | no | every feature |
 
@@ -201,8 +204,8 @@ RLM-Gaming/
   RLM-GAMING.md                  ← this file (architecture source of truth)
   README.md
   .claude/
-    agents/      the-*.md        ← 19 Arcade heads
-    skills/      */SKILL.md      ← 14 studio skills
+    agents/      the-*.md        ← 20 Arcade heads
+    skills/      */SKILL.md      ← 16 studio skills
     commands/    *.md            ← studio slash commands
   (registered into Hydra at squads/rlm-gaming/)
     squad.yaml                   ← Hydra squad descriptor

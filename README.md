@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Hydra squad](https://img.shields.io/badge/Hydra-squad%20pack-7b2ff7)](https://github.com/lebobo88/Hydra)
 [![Plugin](https://img.shields.io/badge/claude--plugin-rlm--gaming%20v0.1.0-1f8acb)](./.claude-plugin/plugin.json)
-[![Heads](https://img.shields.io/badge/heads-19-success)](#5-the-roster--19-heads)
+[![Heads](https://img.shields.io/badge/heads-20-success)](#5-the-roster--20-heads)
 [![Status](https://img.shields.io/badge/status-alpha-orange)](#13-roadmap)
 
 > **A senior, multi-agent game studio that runs as a [Hydra](https://github.com/lebobo88/Hydra) squad pack.**
@@ -23,9 +23,9 @@ foundational design rationale is in the [Blueprint document](./Blueprint%20for%2
 2. [The cardinal rule](#2-the-cardinal-rule)
 3. [Capabilities](#3-capabilities)
 4. [The five studio layers](#4-the-five-studio-layers)
-5. [The roster — 19 heads](#5-the-roster--19-heads)
-6. [Skills (14)](#6-skills-14)
-7. [Commands (8)](#7-commands-8)
+5. [The roster — 20 heads](#5-the-roster--20-heads)
+6. [Skills (16)](#6-skills-16)
+7. [Commands (9)](#7-commands-9)
 8. [Gates & HITL control points](#8-gates--hitl-control-points)
 9. [Usage](#9-usage)
 10. [How it ties into the Hydra ecosystem](#10-how-it-ties-into-the-hydra-ecosystem)
@@ -39,7 +39,7 @@ foundational design rationale is in the [Blueprint document](./Blueprint%20for%2
 
 ## 1. What this is
 
-**RLM-Gaming** — codename **The Arcade Crown** — is a pack of **19 specialized
+**RLM-Gaming** — codename **The Arcade Crown** — is a pack of **20 specialized
 AI agents ("heads")** organized like a real game studio's senior leadership. Each
 head is a domain expert (game director, systems designer, netcode lead, economy
 designer, QA/balance lead, ratings & cert officer, anti-cheat/security gate, …)
@@ -63,7 +63,7 @@ It ships as a **Claude Code plugin** (`rlm-gaming`, see
 > **If the deliverable is an image/audio/video/3D binary → emit a `CREATIVE_BRIEF` / `SHOT_LIST` / `ASSET_JOB` to garland.**
 > **Everything the crown keeps is text:** design docs, specs, plans, simulations, and gate verdicts.
 
-This separation is what keeps a 19-agent studio coherent: the crown stays the
+This separation is what keeps a 20-agent studio coherent: the crown stays the
 single source of design truth, while the muscle (code generation, asset
 rendering) lives in independently-shippable sibling squads with their own
 provenance and review.
@@ -87,8 +87,9 @@ draws on, and the gate it answers to:
 | Netcode model · server-authority boundaries · rollback/lockstep | The Netweaver | `game-netcode-and-multiplayer` | `server-authority-fairplay` |
 | Editor tooling · import/build pipelines · CI hooks (specs) | The Toolwright | `game-studio-pipeline` | — |
 | Art direction · style bible · LOD/poly/texture budgets | The Artisan | `game-art-and-audio-direction` | `ai-content-provenance` |
+| 3D modeling/DCC · topology/retopo/UV/PBR/LOD · Blender commission contract | The Sculptor | `game-3d-modeling-and-dcc` | `mesh-topology-budget` |
 | Audio direction · mix tiers · Wwise/FMOD event maps | The Conductor | `game-art-and-audio-direction` | — |
-| Animation design · rigs · IK · blend trees · state machines | The Choreographer | `game-art-and-audio-direction` | — |
+| Animation design · rigs · IK · skinning · blend trees · state machines | The Choreographer | `game-rigging-and-animation-pipeline` | `rig-quality` |
 | QA strategy · bot playthroughs · balance Monte-Carlo · regression | The Warden | `game-qa-and-balance` | `game-accessibility-guidelines` |
 | Synthetic playtests · fun-proxy metrics · friction/churn reports | The Playtester | `game-qa-and-balance` | — |
 | Live-ops seasons · event cadence · hotfix runbooks · telemetry | The Custodian | `game-liveops-and-telemetry` | — |
@@ -107,15 +108,15 @@ draws on, and the gate it answers to:
 │  TECHNICAL   The Puppeteer · The Netweaver · The Toolwright        │
 │              (thin — delegates implementation to engineering)      │
 ├──────────────────────────────────────────────────────────────────┤
-│  CREATIVE    The Artisan · The Conductor · The Choreographer       │
-│              (thin — commissions binaries from garland)            │
+│  CREATIVE    The Artisan · The Sculptor · The Conductor ·          │
+│              The Choreographer (thin — commissions garland)        │
 ├──────────────────────────────────────────────────────────────────┤
 │  EVALUATION  The Warden · The Playtester · The Custodian           │
 │              The Arbiter · The Sentinel  ← ship gates              │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-## 5. The roster — 19 heads
+## 5. The roster — 20 heads
 
 `tier` is the head's authority class: **gatekeeper** (owns a blocking gate),
 **execute** (produces artifacts directly), or **advisory** (designs/specs and
@@ -149,8 +150,9 @@ security gate is **The Sentinel**.
 | Mythic name | Slug | Tier | Model | Charter |
 |---|---|---|---|---|
 | **The Artisan** | `the-artisan` | advisory | Opus 4.8 | Style bible, reference boards, LOD/poly/texture budgets, art cohesion. Commissions garland; co-owns `ai-content-provenance`. |
+| **The Sculptor** | `the-sculptor` | advisory | Opus 4.8 | 3D geometry/topology standards, retopo/UV/PBR/LOD, pivot/scale/axis, the Blender/DCC commission contract. Commissions garland blender-model/blender-rig; owns `mesh-topology-budget`. |
 | **The Conductor** | `the-conductor` | advisory | Sonnet 4.6 | Adaptive/interactive music, mix tiers, sonic palette, Wwise/FMOD config & event bindings; commissions garland audio. |
-| **The Choreographer** | `the-choreographer` | advisory | Sonnet 4.6 | Rig specs, IK, blend trees, animation state machines tied to gameplay states; root-motion decisions; delegates anim/mocap. |
+| **The Choreographer** | `the-choreographer` | advisory | Sonnet 4.6 | Rig specs, IK, skinning/weight QC, blend trees, animation state machines tied to gameplay states; root-motion decisions; owns `rig-quality`; delegates anim/mocap. |
 
 ### Evaluation layer (the ship gates)
 | Mythic name | Slug | Tier | Model | Charter |
@@ -163,7 +165,7 @@ security gate is **The Sentinel**.
 
 > See [`/game-roster`](./.claude/commands/game-roster.md) to print this live in a session.
 
-## 6. Skills (14)
+## 6. Skills (16)
 
 Skills are the reusable design playbooks the heads read before composing an
 artifact. All live under [`.claude/skills/`](./.claude/skills/).
@@ -179,13 +181,15 @@ artifact. All live under [`.claude/skills/`](./.claude/skills/).
 | `game-netcode-and-multiplayer` | The Netweaver | Network-model selection, server-authority boundaries, lag compensation, interest management, determinism for RTS |
 | `game-engine-targets` | The Forgemaster | Engine-selection matrices + per-engine tech-design checklists (Unity/UE5/Godot/Web/RTS/custom) |
 | `game-art-and-audio-direction` | The Artisan, The Conductor, The Choreographer | Style bible, budgets, audio mix-tier sheet & event map; commissions garland with `provenance_required:true` |
+| `game-3d-modeling-and-dcc` | The Sculptor | Topology/edge-flow rules, retopo targets, UV/PBR/LOD specs, pivot/scale/axis, FBX/glTF/USD export, the Blender/DCC commission contract (garland blender-mcp) |
+| `game-rigging-and-animation-pipeline` | The Choreographer | Armature standards, FK/IK + switching, LBS/DQS skinning + weight QC, corrective shapes, mocap retargeting, NLA, gimbal QC, cross-engine export |
 | `game-qa-and-balance` | The Warden, The Playtester | Test plans from specs, bot-playthrough specs, balance Monte-Carlo, telemetry taxonomy, accessibility floor |
 | `game-cert-and-compliance` | The Arbiter | Content-disclosure inventory, IARC answer map, target-rating feasibility, per-platform TRC checklists, cert package |
 | `game-liveops-and-telemetry` | The Custodian | Season/event plans, content-drop schedule, store A/B tests, hotfix runbook, retention-KPI spec |
 | `game-security-and-anticheat` | The Sentinel | Server-authority matrix, game threat model, anti-cheat plan, secure-RNG spec, report/ban pipeline |
 | `game-studio-pipeline` | The Director, The Producer | The five-layer flow + the exact cross-squad delegation contract (which envelope goes where) |
 
-## 7. Commands (8)
+## 7. Commands (9)
 
 Studio slash-commands under [`.claude/commands/`](./.claude/commands/):
 
@@ -198,7 +202,8 @@ Studio slash-commands under [`.claude/commands/`](./.claude/commands/):
 | [`/game-liveops-season`](./.claude/commands/game-liveops-season.md) | The Custodian-led season plan — telemetry + VoC, cadence, economy changes (loot-box gate), asset commissions, store A/B, hotfix runbook |
 | [`/game-balance-pass`](./.claude/commands/game-balance-pass.md) | The Warden + The Playtester run synthetic playtest + balance Monte-Carlo, then route tuning to design heads with an accessibility check |
 | [`/game-cert-review`](./.claude/commands/game-cert-review.md) | The Arbiter-led ratings + platform-cert gate: content inventory, IARC map, feasibility, per-platform TRC, loot-box jurisdiction, submission HITL |
-| [`/game-roster`](./.claude/commands/game-roster.md) | Print the Arcade pantheon — all 19 heads by layer with name, slug, tier, charter, and gate. Read-only. |
+| [`/game-asset-3d`](./.claude/commands/game-asset-3d.md) | The Sculptor-led 3D asset flow: DCC contract → commission garland blender-model/blender-rig (blender-mcp) → `mesh-topology-budget` + `rig-quality` → C2PA provenance → `DECISION_RECORD` |
+| [`/game-roster`](./.claude/commands/game-roster.md) | Print the Arcade pantheon — all 20 heads by layer with name, slug, tier, charter, and gate. Read-only. |
 
 ## 8. Gates & HITL control points
 
@@ -212,7 +217,9 @@ A **gate** is a quality bar a head enforces before work proceeds. Gates marked
 | `esrb-pegi-iarc-rating` | The Arbiter | ✅ | Before store submission |
 | `platform-cert-readiness` | The Arbiter | ✅ | `phase == cert` |
 | `server-authority-fairplay` | The Sentinel (Netweaver cross-ref) | ✅ | `online == true` |
-| `ai-content-provenance` | The Artisan + The Sentinel | ✅ | Any gen-AI asset shipped (garland C2PA-signs) |
+| `ai-content-provenance` | The Artisan + The Sentinel | ✅ | Any gen-AI asset shipped (garland C2PA-signs) — covers 3D meshes/rigs too |
+| `mesh-topology-budget` | The Sculptor | — | Any returned 3D mesh (topology / poly / UV / LOD / axis-scale / export) |
+| `rig-quality` | The Choreographer | — | Any returned rig/animation (hierarchy / weights / gimbal / cross-engine export) |
 | `game-perf-budget` *(reused from pair-programmer)* | The Forgemaster | — | Perf-tagged stages |
 | `game-accessibility-guidelines` *(reused from pair-programmer)* | The Warden | — | Every feature (GAG/XAG/APX/CVAA floor) |
 
@@ -347,7 +354,7 @@ graph LR
 ```
 
 ### Level 3 — Component (inside the Arcade Crown)
-The five layers, the 19 heads, and the two delegation exits.
+The five layers, the 20 heads, and the two delegation exits.
 
 ```mermaid
 graph TD
@@ -370,8 +377,9 @@ graph TD
     end
     subgraph CREA[Creative layer · thin]
         Art[The Artisan<br/>provenance gate]
+        Scul[The Sculptor<br/>mesh-topology gate]
         Cond[The Conductor]
-        Chor[The Choreographer]
+        Chor[The Choreographer<br/>rig-quality gate]
     end
     subgraph EVAL[Evaluation layer · ship gates]
         Ward[The Warden<br/>accessibility gate]
@@ -440,10 +448,10 @@ rlm-gaming/
 ├── Blueprint … .md                 ← foundational design rationale
 ├── LICENSE                         ← MIT
 ├── .claude-plugin/
-│   ├── plugin.json                 ← plugin id `rlm-gaming` v0.1.0 (declares 19 agents + skills + commands)
+│   ├── plugin.json                 ← plugin id `rlm-gaming` v0.1.0 (declares 20 agents + skills + commands)
 │   └── marketplace.json            ← local marketplace wrapper `rlm-gaming-local`
 └── .claude/
-    ├── agents/                     ← 19 Arcade heads (the-director.md … the-sentinel.md)
+    ├── agents/                     ← 20 Arcade heads (the-director.md … the-sentinel.md)
     ├── skills/                     ← 14 design playbooks (game-vision-and-pillars/ … game-studio-pipeline/)
     └── commands/                   ← 8 studio commands (game-studio.md … game-roster.md)
 ```

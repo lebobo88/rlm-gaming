@@ -49,6 +49,14 @@ authority: advisory
   (shaders, LOD chains, Nanite/Lumen, URP/HDRP/SRP setup) → `engineering`
   (pp technical-artist) as a `DEV_TASK`; The Artisan sets the *budget*, engineering
   hits it.
+- **Owns visual style + perf-facing budgets, not geometry execution.** Topology /
+  edge-flow rules, retopo targets, UV / lightmap layout, PBR channel sets, LOD-chain
+  construction, and pivot/scale/axis conventions belong to **The Sculptor**
+  (`game-3d-modeling-and-dcc`). For 3D assets, The Artisan sets style + the headline
+  poly/texture budget; The Sculptor writes the DCC contract and commissions the mesh.
+  Two bars on one asset: The Artisan's **style-similarity**, The Sculptor's
+  **mesh-topology-budget**. (Organic 3D may start from text-to-3D — Rodin/Meshy base
+  mesh — but that is The Sculptor's pipeline, retopologized to budget before ship.)
 - **Commissions** garland (RLM-Creative / Helios) for all rendered assets via
   `CREATIVE_BRIEF` (direction) + `ASSET_JOB` (job), and **reads** results via
   `rlm_output_read`. It does not become the muse.

@@ -1,12 +1,12 @@
 ---
-description: "Show the Arcade pantheon — all 19 heads grouped by studio layer with mythic name, slug, authority, tier, charter, and the gate each owns. Read-only."
+description: "Show the Arcade pantheon — all 20 heads grouped by studio layer with mythic name, slug, authority, tier, charter, and the gate each owns. Read-only."
 argument-hint: "[layer]"
 model: sonnet
 ---
 
 # /game-roster
 
-A read-only display of the Arcade crown — the 19 heads of the RLM-Gaming studio brain — grouped by the five studio layers. For each head it shows the mythic name, plaza slug, authority, model tier, charter, and which gate (if any) the head owns. Pass an optional `[layer]` (`executive`, `design`, `technical`, `creative`, `evaluation`) to show only that layer. This command renders only; it dispatches no work and emits no envelopes.
+A read-only display of the Arcade crown — the 20 heads of the RLM-Gaming studio brain — grouped by the five studio layers. For each head it shows the mythic name, plaza slug, authority, model tier, charter, and which gate (if any) the head owns. Pass an optional `[layer]` (`executive`, `design`, `technical`, `creative`, `evaluation`) to show only that layer. This command renders only; it dispatches no work and emits no envelopes.
 
 ## Steps
 
@@ -35,8 +35,9 @@ A read-only display of the Arcade crown — the 19 heads of the RLM-Gaming studi
 
 **Creative layer (delegates to garland)**
 - **The Artisan** (`art-director`) — advisory · opus — style bible, art direction, LOD/poly budgets — owns: `ai-content-provenance` (with The Sentinel)
+- **The Sculptor** (`3d-modeling-director`) — advisory · opus — 3D geometry/topology standards, retopo/UV/PBR/LOD, pivot/scale/axis, the Blender/DCC commission contract — owns: `mesh-topology-budget`
 - **The Conductor** (`audio-director`) — advisory · sonnet — adaptive audio, mix tiers, Wwise/FMOD — owns: —
-- **The Choreographer** (`animation-director`) — advisory · sonnet — rigs, IK, blend trees, anim state machines, root-motion — owns: —
+- **The Choreographer** (`animation-director`) — advisory · sonnet — rigs, IK, blend trees, anim state machines, root-motion — owns: `rig-quality`
 
 **Evaluation layer**
 - **The Warden** (`qa-balance-lead`) — gatekeeper · sonnet — test strategy, bot playthroughs, balance Monte-Carlo, telemetry tuning — owns: `game-accessibility-guidelines`
