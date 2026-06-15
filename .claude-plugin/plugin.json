@@ -1,0 +1,28 @@
+{
+  "name": "rlm-gaming",
+  "description": "RLM-Gaming — the Arcade crown. A senior multi-agent game studio (vision, design, production, runtime-AI/netcode direction, art/audio direction, QA/balance, live-ops, ratings/cert, fair-play security). Orchestrates + delegates: code -> engineering (pair-programmer), assets -> garland (RLM-Creative).",
+  "version": "0.1.0",
+  "agents": [
+    "./.claude/agents/the-director.md",
+    "./.claude/agents/the-producer.md",
+    "./.claude/agents/the-forgemaster.md",
+    "./.claude/agents/the-systemsmith.md",
+    "./.claude/agents/the-loremaster.md",
+    "./.claude/agents/the-cartographer.md",
+    "./.claude/agents/the-duelist.md",
+    "./.claude/agents/the-economist.md",
+    "./.claude/agents/the-puppeteer.md",
+    "./.claude/agents/the-netweaver.md",
+    "./.claude/agents/the-toolwright.md",
+    "./.claude/agents/the-artisan.md",
+    "./.claude/agents/the-conductor.md",
+    "./.claude/agents/the-choreographer.md",
+    "./.claude/agents/the-warden.md",
+    "./.claude/agents/the-playtester.md",
+    "./.claude/agents/the-custodian.md",
+    "./.claude/agents/the-arbiter.md",
+    "./.claude/agents/the-sentinel.md"
+  ],
+  "skills": "./.claude/skills",
+  "commands": "./.claude/commands"
+}

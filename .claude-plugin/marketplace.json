@@ -1,0 +1,12 @@
+{
+  "name": "rlm-gaming-local",
+  "owner": { "name": "rob" },
+  "description": "Local marketplace wrapping the RLM-Gaming Arcade-crown game-studio plugin.",
+  "plugins": [
+    {
+      "name": "rlm-gaming",
+      "source": "./",
+      "description": "RLM-Gaming — the Arcade crown. Senior multi-agent game studio; Hydra squad pack. 19 heads, 14 skills, 8 commands."
+    }
+  ]
+}
