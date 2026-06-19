@@ -34,3 +34,32 @@ The Director recalls a prior netcode post-mortem, routes greenlight → `/game-g
 ## Delegation
 
 Code → `engineering` (`PRD`/`DEV_TASK`, pp profile from `--engine`). Assets → `garland` (`CREATIVE_BRIEF`/`ASSET_JOB`, C2PA-signed). Strategy escalation in/out via `C_SUITE_DECISION_PACKET` (executive) and `HANDOFF` (legal-compliance/Senate). RLM-Gaming emits only design artifacts, plans, gates, and `DECISION_RECORD`s.
+
+### Delegation contract (machine-readable — Hydra forwards these)
+
+When dispatched through Hydra, return delegated work as typed envelopes under an
+`emitted_envelopes` key on your result (a JSON list), **in addition to** the
+master `DECISION_RECORD`. Hydra's dispatcher extracts each, stamps
+`origin_squad="rlm-gaming"`, and forwards it to its target squad in the same
+pass — so the design actually reaches pair-programmer / Helios instead of
+stranding as prose.
+
+- **Engine/gameplay code** → one `DEV_TASK` per scoped unit, `target_squad="engineering"`.
+  - Required: `owner` (frontend|backend|fullstack|devops|data), `repo` (the game
+    repo, e.g. `"candc"`), `branch`, `instructions`.
+  - **Set `pp_team`** to the right pair-programmer team: `game-feature-team`
+    (default), `game-netcode-team` (online), `game-cert-team` (submission/
+    ratings), `game-live-ops-team` (seasons/events), `game-bug-fix-team`,
+    `game-refactor-team`, `game-accessibility-team`, or `game-art-pipeline-team`.
+    Optionally `pp_profile` (e.g. `game-dev-<engine>`).
+  - **Pack the game context INTO `instructions`**: design pillars, perf budget,
+    engine/runtime target, and any determinism / server-authority constraints —
+    engineering never sees your design docs otherwise. (If `pp_team` is omitted,
+    Hydra auto-defaults to `game-feature-team` because the envelope originates
+    from rlm-gaming.)
+- **Art/audio/3D binaries** → `CREATIVE_BRIEF` / `SHOT_LIST` / `ASSET_JOB`,
+  `target_squad="garland"`.
+
+An envelope without `target_squad` still routes by type (DEV_TASK→engineering;
+CREATIVE_BRIEF/SHOT_LIST/ASSET_JOB→garland). Honor any `priming` directive Hydra
+passes in the skill args — it restates this contract at dispatch time.
