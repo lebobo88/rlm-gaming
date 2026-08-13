@@ -1,6 +1,6 @@
 ---
 name: game-netcode-and-multiplayer
-description: Netcode and multiplayer DESIGN for the Arcade crown (The Netweaver). Selects the network model (rollback / lockstep / client-prediction+server-reconciliation / snapshot-interpolation), draws server-authority boundaries, plans lag compensation, interest management, and host migration, and specifies determinism for RTS lockstep. Produces a netcode_model spec — never engine code (that ships as a DEV_TASK to engineering game-netcode-team). Ties to the server-authority-fairplay rubric and The Sentinel venom gate. Read before any online: true feature.
+description: "Netcode and multiplayer DESIGN for the Arcade crown (The Netweaver). Selects the network model (rollback / lockstep / client-prediction+server-reconciliation / snapshot-interpolation), draws server-authority boundaries, plans lag compensation, interest management, and host migration, and specifies determinism for RTS lockstep. Produces a netcode_model spec — never engine code (that ships as a DEV_TASK to engineering game-netcode-team). Ties to the server-authority-fairplay rubric and The Sentinel venom gate. Read before any online: true feature."
 ---
 
 # Game netcode & multiplayer skill
