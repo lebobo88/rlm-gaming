@@ -5,7 +5,7 @@
   "plugins": [
     {
       "name": "rlm-gaming",
-      "source": "./",
+      "source": "./plugins/rlm-gaming",
       "description": "RLM-Gaming — the Arcade crown. Senior multi-agent game studio; Hydra squad pack. 19 heads, 14 skills, 8 commands."
     }
   ]
