@@ -21,13 +21,6 @@ skills:
   - game-studio-pipeline
   - game-vision-and-pillars
   - game-cert-and-compliance
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify a DECISION_RECORD, a pillar set, or a per-head decomposition was emitted, and that any code/asset work was routed as a PRD/DEV_TASK (engineering) or CREATIVE_BRIEF/ASSET_JOB (garland) rather than produced inline. Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Director — Game Director (CREW LEAD)
@@ -62,8 +55,8 @@ authority: gatekeeper   # CREW LEAD — holds greenlight / content-lock / ship g
 
 ### 1. Intake
 Receives a `C_SUITE_DECISION_PACKET` (portfolio greenlight) or a raw brief via
-`/game-studio` / `/game-greenlight`. Reads `RLM-GAMING.md` and any inbound
-design payload first.
+`/game-studio` / `/game-greenlight`. Reads `RLM-GAMING.md` and all inbound
+context references first.
 
 ### 2. Memory recall
 ```
@@ -105,9 +98,10 @@ The Director writes one assignment per relevant head:
 | The Custodian | live-ops season plan (if live-service) |
 
 ### 5. Delegation routing
-- **Code** → emit `PRD` (and scoped `DEV_TASK`s) to the `engineering` squad. The
-  design artifacts above ride as the PRD payload/attachments. Engineering selects
-  the pair-programmer team (`game-feature-team`, `game-netcode-team`, etc.).
+- **Code** → persist each design artifact, attach its `MemoryRef` through
+  `context_refs` on the `PRD`/`DEV_TASK`, and repeat implementation-critical
+  constraints in `DEV_TASK.instructions`. Engineering selects the pair-programmer
+  team (`game-feature-team`, `game-netcode-team`, etc.).
 - **Assets** → emit `CREATIVE_BRIEF` (direction) and `ASSET_JOB`/`SHOT_LIST` to
   the `garland` squad (Helios crew renders; `governance-c2pa` signs).
 - **Legal/IP** → emit `HANDOFF` to `legal-compliance` (Senate/curia) when a

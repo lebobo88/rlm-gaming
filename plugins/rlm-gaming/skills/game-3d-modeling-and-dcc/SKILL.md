@@ -1,6 +1,6 @@
 ---
 name: game-3d-modeling-and-dcc
-description: 3D modeling and DCC (Blender) pipeline standards for the Arcade crown (The Sculptor). Produces geometry execution standards — topology / edge-flow rules, retopo targets, UV / lightmap layout, PBR channel sets, LOD chains, pivot/scale/axis conventions — and the Blender/DCC commission contract that garland's blender-model / blender-rig sub-agents execute via the existing blender-mcp backend. The crown never models, retopologizes, or drives Blender inline; it writes the DCC contract and emits an ASSET_JOB (model_type:mesh|rig, provenance_required:true) to garland. Ties to the mesh-topology-budget gate and (for gen-AI assets) ai-content-provenance.
+description: 3D modeling and DCC (Blender) pipeline standards for the Arcade crown (The Sculptor). Produces geometry execution standards — topology / edge-flow rules, retopo targets, UV / lightmap layout, PBR channel sets, LOD chains, pivot/scale/axis conventions — and the Blender/DCC commission contract that garland's blender-model / blender-rig sub-agents execute via the existing blender-mcp backend. The crown never models, retopologizes, or drives Blender inline; it persists the DCC contract and emits an ASSET_JOB (model_type:mesh|rig, context_refs, output_bucket, provenance_required:true) to garland. Ties to the mesh-topology-budget gate and (for gen-AI assets) ai-content-provenance.
 ---
 
 # Game 3D modeling & DCC pipeline skill
@@ -9,8 +9,8 @@ You are producing a **3D geometry direction** artifact — the topology rules,
 budgets, UV/PBR specs, LOD chains, axis conventions, and the **DCC commission
 contract** that *commission and constrain* 3D asset production. You do **not**
 model, retopologize, UV-unwrap, bake, or export a single mesh. The cardinal
-handoff: the crown writes the DCC contract, then emits an `ASSET_JOB`
-(`model_type: mesh | rig`) to the `garland` squad, whose Helios 3D crew
+handoff: the crown writes and persists the DCC contract, then emits an `ASSET_JOB`
+(`model_type: mesh | rig`, `context_refs`, `output_bucket`) to the `garland` squad, whose Helios 3D crew
 (`blender-model`, `blender-rig`) executes it through the existing **blender-mcp**
 backend and whose `governance-c2pa` signs the result.
 
@@ -24,9 +24,9 @@ Artisan, `game-art-and-audio-direction`).
 ## The cardinal handoff
 
 > The crown COMMISSIONS; garland MODELS; garland SIGNS.
-> A DCC contract (markdown spec + budgets + reference *links*) → `ASSET_JOB` with
-> `model_type: mesh` (props/environment) or `model_type: rig` (skinned characters)
-> and `provenance_required: true`. If you are about to open Blender, call a
+> A persisted DCC contract (markdown spec + budgets + reference *links*) → `ASSET_JOB` with
+> `model_type: mesh` (props/environment) or `model_type: rig` (skinned characters),
+> `context_refs`, `output_bucket`, and `provenance_required: true`. If you are about to open Blender, call a
 > blender-mcp tool, edit a `bpy` data-block, or export a `.blend`/`.fbx`/`.glb`/
 > `.usd`, you have crossed the boundary — emit the envelope instead.
 
@@ -99,21 +99,16 @@ export, non-manifold on skinned meshes.
 ### Template: `ASSET_JOB` — 3D mesh commission (to garland)
 ```yaml
 type: ASSET_JOB
+origin_squad: rlm-gaming
 target_squad: garland
+workflow_id: <workflow UUID>
 model_type: mesh                 # mesh (prop/env) | rig (skinned character)
-brief: "Modular ruin wall kit — 'The Hollow King', see art_bible.md + this DCC contract"
-style_ref: art_bible.md          # The Artisan owns style; links only
-dcc_contract:
-  approach: geometry_nodes       # bmesh | geometry_nodes | ai_base_then_retopo | sculpt_retopo
-  topology: { quad_dominant: true, ngons: forbidden, deformation_loops: n/a }
-  budget: { tris_lod0: 6000, lods: 4, tris_ladder: [6000,3000,1500,750] }
-  uv: { sets: 1, texel_density: "10.24 px/cm", lightmap_uv: true, overlap: none }
-  pbr: { albedo: true, orm: true, normal: true, emissive: true }
-  transform: { up: "+Z", forward: "-Y", unit: "1m", apply_transforms: true, pivot: base }
-  export: { format: gltf2, engine: godot, validate_for_engine: true }
-platform_tier: current_gen
+output_bucket: "rlm-garland/game-assets/hollow-king"
+style_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/art_bible.md", summary: "art bible" }
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:dcc/ruin-wall-contract.md", summary: "DCC contract: topology, budget, UV, PBR, transforms, export" }
 provenance_required: true        # garland governance-c2pa signs; non-negotiable for gen-AI
-acceptance: mesh-topology-budget
 ```
 
 ### Template: `mesh-topology-budget` gate (acceptance)
@@ -134,20 +129,20 @@ verdict: pass | revise(send back to garland with notes) | reject
 ### Template: text-to-3D base-mesh job (organic)
 ```yaml
 type: ASSET_JOB
+origin_squad: rlm-gaming
 target_squad: garland
+workflow_id: <workflow UUID>
 model_type: rig                  # character → blender-rig handles model+rig
-brief: "Hollow King boss — base mesh from concept, then retopo to deformable cage"
-pipeline: [ "image_to_3d (Rodin/Meshy) -> base mesh", "decimate/remesh", "retopo to quad cage", "bake normals", "UV + PBR", "deformation loops at joints" ]
-budget: { tris_lod0: 90000, lods: 4 }
-handoff: "deformation-ready mesh -> The Choreographer rig spec (game-rigging-and-animation-pipeline)"
+output_bucket: "rlm-garland/game-assets/hollow-king"
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:dcc/hollow-king-rig-contract.md", summary: "deformation, rig, retarget, and export contract" }
 provenance_required: true
-acceptance: [ mesh-topology-budget, rig-quality ]
 ```
 
 ## Constraints
 
 - The crown directs geometry; it never models or drives Blender. Every 3D asset →
-  `ASSET_JOB` (`model_type: mesh|rig`) to `garland`; execution is blender-model /
+  `ASSET_JOB` (`model_type: mesh|rig`, persisted `context_refs`, concrete `output_bucket`) to `garland`; execution is blender-model /
   blender-rig on the existing **blender-mcp** backend.
 - Every 3D `ASSET_JOB` carries `provenance_required: true`; garland C2PA-signs
   (sidecar for binary meshes) and the asset passes `ai-content-provenance` (HITL)

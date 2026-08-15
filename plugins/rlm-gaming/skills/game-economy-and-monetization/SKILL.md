@@ -65,17 +65,13 @@ jurisdiction table does not pass.
 | Banner A | 4★      | SR  | 5.1  | 5.10% | soft pity @ 75 | — |
 
 ## Per-region jurisdiction (tab)
-| Region | Loot box | Odds published | Age gate | Special rule | Action |
-| Belgium (BE) | BANNED | n/a | n/a | gambling-law ruling | DISABLE paid random; sell direct |
-| Netherlands (NL) | RESTRICTED | yes | yes | tradeable-reward scrutiny | non-tradeable + odds, or disable |
-| China (CN) | allowed | MANDATORY publish | yes | publish exact rates; anti-addiction time limits | publish + minor caps |
-| South Korea (KR) | allowed | MANDATORY publish (2024 law) | yes | GMC oversight | publish exact rates |
-| Japan (JP) | allowed | publish (industry) | — | NO kompu-gacha (illegal) | publish; ban complete-gacha |
-| Apple (iOS, global) | allowed | REQUIRED (App Store 3.1.1) | yes | must disclose odds | publish in-app |
-| Google (Play, global) | allowed | REQUIRED (Play policy) | yes | must disclose odds | publish in-app |
-| Australia (AU) | allowed | — | M-rating | sim-gambling content → M+ | rating note → Arbiter |
-| EU general | watch | yes | 18+ likely | DFA / consumer-law pressure | publish + age-gate, monitor |
-| US (ESRB) | allowed | ESRB "in-game purchases (random)" label | yes | label required | apply label |
+| Region/platform | Status | Verified requirement | Official source / retrieved date | Verification | Action |
+| <region/platform> | allowed / restricted / prohibited / unknown | <specific requirement> | <official URL · YYYY-MM-DD> | verified / unknown / legal_handoff_required | <design or rollout action> |
+
+This table is a verification artifact, not a static legal reference. Do not clear
+`loot-box-jurisdiction` from remembered regional rules, a secondary source, or a
+rule that applies in a different market. Any `unknown` or legal interpretation
+requires a `HANDOFF` to `legal-compliance` and blocks the affected launch/change.
 
 ## Progression curves (tab)
 | Level | XP req | Cumulative | Power | Time-to-level (median sessions) | Paywall pressure |
@@ -134,9 +130,9 @@ jurisdiction table does not pass.
 - Randomized paid mechanics MUST publish odds, include a hard pity floor, and
   fill the jurisdiction table for EVERY shipping region — or they do not ship
   (`loot-box-jurisdiction`, HITL).
-- BE = disable paid random; NL = restructure or disable; JP = no kompu-gacha
-  (refuse the pattern globally); CN/KR/JP/Apple/Google = publish exact odds;
-  AU = rating note to The Arbiter.
+- Per-region/platform requirements must be verified from an official current
+  source with retrieval date. Treat unsupported claims as `unknown`; route legal
+  interpretation to The Arbiter and `legal-compliance` rather than guessing.
 - No pay-to-win without a preserved skill ceiling; monetize cosmetics, time, and
   breadth — never the win condition.
 - Every currency MUST balance source/sink/leak; project LTV/ARPDAU from a

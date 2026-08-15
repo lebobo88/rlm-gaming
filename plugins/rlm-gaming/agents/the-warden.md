@@ -13,13 +13,6 @@ context:
   - "RLM-GAMING.md"
 skills:
   - game-qa-and-balance
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify The Warden emitted a test/balance STRATEGY (not test code), that any test-code or harness authoring was routed to engineering as a PRD/DEV_TASK, and that the game-accessibility-guidelines floor was asserted for every feature. Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Warden — QA & Balance Lead (gatekeeper)
@@ -66,7 +59,7 @@ authority: gatekeeper   # owns game-accessibility-guidelines; co-watches game-pe
 ### 1. Intake
 Receives the pillar set + per-head deliverables (mechanic specs, encounter docs,
 level greybox, economy sheet) from The Director's fan-out, plus the platform/perf
-tier list from The Forgemaster. Reads `RLM-GAMING.md` and inbound design payloads
+tier list from The Forgemaster. Reads `RLM-GAMING.md` and inbound design context
 first.
 
 ### 2. Memory recall

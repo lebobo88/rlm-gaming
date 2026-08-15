@@ -56,6 +56,7 @@ go in `summary` / `non_functional_requirements`.
 type: PRD
 origin_squad: rlm-gaming
 target_squad: engineering
+workflow_id: <workflow UUID>
 source_goal_id: <uuid of the root goal>
 summary: "Parry mechanic — Unreal soulslike (engine: game-dev-unreal; suggested pp team: game-feature-team)"
 acceptance_criteria:
@@ -67,6 +68,22 @@ context_refs:                     # MemoryRef handles to the persisted design do
   - { tier: episodic, key: "rlmgaming:output:design/parry-mechanic_spec.md", summary: "mechanic spec" }
   - { tier: episodic, key: "rlmgaming:output:design/parry-encounter_doc.md", summary: "encounter doc" }
 ```
+```yaml
+type: DEV_TASK
+origin_squad: rlm-gaming
+target_squad: engineering
+workflow_id: <workflow UUID>
+owner: fullstack                 # frontend | backend | fullstack | devops | data
+repo: <allow-listed game repo>
+branch: <feature branch>
+pp_team: game-feature-team
+pp_profile: game-dev-unreal
+instructions: >
+  Implement the persisted parry spec. Engine: Unreal. Perf: PS5/XSX 60fps.
+  Hit registration must be server-authoritative. Read every context_ref first.
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:design/parry-mechanic_spec.md", summary: "mechanic spec" }
+```
 Engineering runs the pair-programmer lifecycle (triage → profile → taxonomy →
 stage loop) and returns a `DECISION_RECORD` (which `rlm-gaming` accepts back).
 
@@ -76,22 +93,49 @@ Emit a `CREATIVE_BRIEF` for direction, `ASSET_JOB` for a concrete asset,
 ComfyUI/diffusion from the Arcade crown.
 
 ```yaml
-type: ASSET_JOB
+type: CREATIVE_BRIEF
+origin_squad: rlm-gaming
 target_squad: garland
+workflow_id: <workflow UUID>
+campaign_id: <campaign UUID>
+objective: "Create a boss concept for The Hollow King"
+target_audience: "players who enjoy readable dark-fantasy boss encounters"
+key_messages: ["regal decay", "readable silhouette"]
+assets_required: ["boss concept sheet"]
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/art_bible.md", summary: "art bible" }
+```
+```yaml
+type: ASSET_JOB
+origin_squad: rlm-gaming
+target_squad: garland
+workflow_id: <workflow UUID>
 model_type: diffusion            # diffusion | nerf | video_llm | tts | music | mesh | rig
-brief: "Boss concept — 'The Hollow King', see art_bible.md style refs"
-style_ref: art_bible.md
+output_bucket: "rlm-garland/game-assets/<project>"
+style_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/art_bible.md", summary: "art bible" }
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/asset-contract.md", summary: "asset contract" }
 provenance_required: true        # garland governance-c2pa signs it
 ```
 For 3D, The Sculptor emits `model_type: mesh` (props/env) or `model_type: rig`
-(skinned characters) with a `dcc_contract` payload (topology / UV / LOD / axis /
-export) — garland's `blender-model` / `blender-rig` execute it on the existing
+(skinned characters) with a persisted DCC contract in `context_refs` (topology /
+UV / LOD / axis / export) — garland's `blender-model` / `blender-rig` execute it on the existing
 blender-mcp backend (see `game-3d-modeling-and-dcc`). Returned 3D passes
 `mesh-topology-budget`; rigs also pass `rig-quality` (`game-rigging-and-animation-pipeline`).
 
 ### → legal-compliance (IP / law)
 Emit a `HANDOFF` to `legal-compliance` (Senate/curia) for licensed-engine terms,
 age-rating law, UGC liability, or IP clearance The Arbiter can't resolve alone.
+
+```yaml
+type: HANDOFF
+origin_squad: rlm-gaming
+target_squad: legal-compliance
+workflow_id: <workflow UUID>
+payload_envelope_id: <UUID of the PRD, CREATIVE_BRIEF, or DECISION_RECORD being handed off>
+granted_memory_scopes: ["team:arcade-crown"]
+```
 
 ## Memory & provenance
 

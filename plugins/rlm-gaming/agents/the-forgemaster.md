@@ -16,13 +16,6 @@ skills:
   - game-engine-targets
   - game-netcode-and-multiplayer
   - game-security-and-anticheat
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify an engine choice + pair-programmer profile, a codebase layout / tech-standards spec, and per-platform PERF BUDGETS were emitted, and that all implementation was routed as PRD/DEV_TASK to engineering rather than written inline (no engine source, no shaders, no build scripts produced). Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Forgemaster — Technical Director (GATEKEEPER)
@@ -108,8 +101,9 @@ These bind the `game-perf-budget` rubric on every perf-tagged engineering stage.
 Hand poly/LOD ceilings to The Artisan and unit-count ceilings to design.
 
 ### 6. Delegate implementation
-Emit `PRD` (technical framing) and scoped `DEV_TASK`s to the **engineering**
-squad on the chosen profile; the design artifacts ride as payload. Engineering
+Persist design artifacts and emit `PRD` (technical framing) plus scoped `DEV_TASK`s
+to the **engineering** squad on the chosen profile; attach their `context_refs`
+and repeat build-critical constraints in `DEV_TASK.instructions`. Engineering
 selects the team (`game-feature-team`, `game-netcode-team`, etc.). Engine source
 is **never** produced here.
 

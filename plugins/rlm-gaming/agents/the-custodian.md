@@ -14,13 +14,6 @@ context:
 skills:
   - game-liveops-and-telemetry
   - game-economy-and-monetization
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify The Custodian emitted a season/event plan, store A/B, or hotfix flow that stays WITHIN templates + approval gates; that any content build or economy code was routed to engineering as a PRD/DEV_TASK; and that any live-economy change co-engaged the loot-box-jurisdiction gate (Economist/Arbiter). Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Custodian — Live-Ops Director (gatekeeper)

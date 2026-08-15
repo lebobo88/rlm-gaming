@@ -121,30 +121,31 @@ execution lives in garland's blender-rig on the existing **blender-mcp** backend
 ### Template: `DEV_TASK` — rig/anim engine implementation (to engineering)
 ```yaml
 type: DEV_TASK
+origin_squad: rlm-gaming
 target_squad: engineering
-team_hint: tech-animator        # or game-art-pipeline-team
-brief: "Player character rig + locomotion AnimGraph for UE5"
-payload:
-  rig_contract: { skeleton: humanoid, root: single_origin, naming: ".L/.R + UE-mannequin map", twist_bones: true }
-  ik: { foot_ik: true, hand_ik: weapon_poses, lookat: aim_offset, fk_ik_switch: true }
-  skinning: { method: LBS+twist, max_influences: 4, normalized: true }
-  anim_system: { engine: unreal, graph: "state machine + 2D blendspace + additive aim", root_motion: traversal_only }
-  export: { format: fbx, up: Z, forward: X, unit: cm, single_root: true, no_scale_anim: true }
-acceptance: rig-quality
+workflow_id: <workflow UUID>
+owner: fullstack
+repo: <allow-listed game repo>
+branch: <feature branch>
+pp_team: game-art-pipeline-team
+instructions: >
+  Implement the persisted UE5 rig and locomotion contract. Preserve a single
+  origin root, <=4 normalized influences, and the rig-quality acceptance criteria.
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:animation/player-rig-contract.md", summary: "rig, IK, skinning, anim graph, and export contract" }
 ```
 
 ### Template: `ASSET_JOB` — Blender rig execution / mocap (to garland)
 ```yaml
 type: ASSET_JOB
+origin_squad: rlm-gaming
 target_squad: garland
+workflow_id: <workflow UUID>
 model_type: rig                 # blender-rig: armature + skin + export
-brief: "Auto-rig + skin the Hollow King deformable mesh; retarget mocap walk/idle set"
-input_mesh: "from The Sculptor (deformation-ready, watertight)"
-rig_spec: { rigger: "auto (Rigify/ARP smart) + custom IK", skinning: "auto-weights + voxel on cloth", qc: rig-quality }
-mocap: { source: "library_walk_idle_set", retarget: "name-map + rest-pose align", nla: "loopable strips" }
-export: { format: fbx, engine: unreal }
+output_bucket: "rlm-garland/game-assets/hollow-king"
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:animation/hollow-king-rig-contract.md", summary: "rig, skinning, mocap, and export contract" }
 provenance_required: true       # gen-AI motion/asset -> C2PA sidecar
-acceptance: rig-quality
 ```
 
 ### Template: `rig-quality` gate (acceptance)

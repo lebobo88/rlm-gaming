@@ -58,7 +58,7 @@ authority: advisory
 
 ### 1. Intake
 Receives The Director's pillars + narrative assignment (tone, audience, scope)
-as a `HANDOFF`/`PRD`. Reads `RLM-GAMING.md` and any inbound design payload first.
+as a `HANDOFF`/`PRD`. Reads `RLM-GAMING.md` and any inbound design context first.
 
 ### 2. Memory recall
 ```

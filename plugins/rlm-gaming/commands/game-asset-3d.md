@@ -27,8 +27,9 @@ and C2PA-signs. The crown never opens Blender.
 3. **Rig contract (if `--type rig`)** — The Choreographer adds the armature / skinning /
    animation contract via `game-rigging-and-animation-pipeline` (single root, `.L/.R`,
    ≤4 influences, FK/IK, retarget, NLA). The mesh must be deformation-ready + watertight.
-4. **Commission garland** — emit an `ASSET_JOB` (`model_type: mesh|rig`,
-   `dcc_contract: {...}`, `provenance_required: true`) to `garland`. `blender-model` /
+4. **Commission garland** — persist the DCC/rig contract, then emit an `ASSET_JOB`
+   (`model_type: mesh|rig`, `context_refs`, concrete `output_bucket`,
+   `provenance_required: true`) to `garland`. `blender-model` /
    `blender-rig` execute via blender-mcp; `governance-c2pa` signs (C2PA sidecar for binary
    meshes).
 5. **Acceptance** — read back via `rlm_output_read`; The Sculptor fires
@@ -44,7 +45,7 @@ and C2PA-signs. The crown never opens Blender.
 ```
 The Sculptor writes the DCC contract + commissions a text-to-3D base mesh → retopo →
 deformation-ready cage; The Choreographer adds the rig contract; an `ASSET_JOB`
-(`model_type: rig`) goes to garland's `blender-rig`; the returned, C2PA-signed FBX
+(`model_type: rig`, `context_refs`, and `output_bucket`) goes to garland's `blender-rig`; the returned, C2PA-signed FBX
 passes `mesh-topology-budget` + `rig-quality`; a DECISION_RECORD closes it.
 
 ## Delegation

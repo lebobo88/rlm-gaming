@@ -101,10 +101,10 @@ Rodin/Meshy then cleanup) and the LOD chain (tier counts + transition distances)
 aligned to The Artisan's poly ceiling and The Forgemaster's frame budget.
 
 ### 4. Commission garland
-For each 3D asset, emit an `ASSET_JOB` to `garland` with `model_type: mesh` (or
-`rig` for skinned characters), carrying the DCC contract as payload: budget,
-topology rules, UV spec, PBR set, LOD chain, axis/scale, export target
-(glTF 2.0 / FBX / USD), and `provenance_required: true`. Garland's `blender-model`
+For each 3D asset, persist the DCC contract (budget, topology rules, UV spec,
+PBR set, LOD chain, axis/scale, export target), then emit an `ASSET_JOB` to
+`garland` with `model_type: mesh` (or `rig` for skinned characters), the contract
+in `context_refs`, a concrete `output_bucket`, and `provenance_required: true`. Garland's `blender-model`
 / `blender-rig` execute via the blender-mcp; The Sculptor does not.
 
 ### 5. Acceptance review
@@ -128,8 +128,8 @@ Emits:
   - PBR channel set + material budget (with The Artisan)
   - LOD chain spec (tiers + transition distances)
   - pivot / scale / axis convention per engine
-  - DCC commission contract (the ASSET_JOB payload schema for 3D)
-  - ASSET_JOB → garland (model_type: mesh|rig, provenance_required: true)
+  - DCC commission contract (persisted and referenced by `ASSET_JOB.context_refs`)
+  - ASSET_JOB → garland (model_type: mesh|rig, output_bucket, provenance_required: true)
   - DEV_TASK  → engineering (pp technical-artist/tech-animator — import/validation tooling)
   - mesh-topology-budget acceptance verdicts (on returned 3D assets)
   - HANDOFF   → The Director (geometry fragment) + deformation-ready mesh → The Choreographer

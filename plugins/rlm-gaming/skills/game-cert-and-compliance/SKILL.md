@@ -55,6 +55,22 @@ per-requirement evidence log, and a `DECISION_RECORD`.
 
 ## Templates
 
+### source-evidence record (required for time-sensitive claims)
+```yaml
+claim: "<specific platform policy, rating rule, or regional-law claim>"
+applies_to: { platforms: [<platform>], regions: [<region>] }
+source:
+  publisher: "<rating board, platform holder, regulator, or store>"
+  url: "https://<official source>"
+  retrieved_at: "YYYY-MM-DD"
+  section_or_excerpt: "<section identifier or short supporting excerpt>"
+verification: verified | unknown | legal_handoff_required
+owner: the-arbiter | legal-compliance
+```
+Use official current sources. A remembered rule, a secondary summary, or a
+source for another region/platform is not verification. `unknown` and
+`legal_handoff_required` cannot produce a pass verdict.
+
 ### content-disclosure inventory
 ```yaml
 artifact: content_disclosure_inventory
@@ -107,10 +123,10 @@ Each row: requirement_id | status | EVIDENCE LINK | owner | DEV_TASK if failing
 ### regional-edit plan
 ```yaml
 regions:
-  CN:  { edits: ["no skeletons/blood per approval norms", "real-name + anti-addiction", "publishing license / ISBN"], handoff: legal-compliance }
-  JP:  { edits: ["CERO compliance", "gore reduction for D/Z avoidance"] }
-  DE:  { edits: ["USK — symbols/extreme-violence review (post-2018 USK can clear w/ social-adequacy)"] }
-note: each regional legal question → HANDOFF to legal-compliance (Senate/curia)
+  CN:  { candidate_edits: ["content, identity, anti-addiction, and publishing requirements require current review"], evidence: source-evidence-record, handoff: legal-compliance }
+  JP:  { candidate_edits: ["CERO content review"], evidence: source-evidence-record }
+  DE:  { candidate_edits: ["USK content review"], evidence: source-evidence-record }
+note: each regional legal question → HANDOFF to legal-compliance (Senate/curia); do not treat examples as current law.
 ```
 
 ### cert-submission checklist
@@ -132,6 +148,9 @@ note: each regional legal question → HANDOFF to legal-compliance (Senate/curia
   `garland`.
 - Cert-readiness is proven per requirement with a linked evidence log — never
   claimed in aggregate. Map to the `platform-cert-readiness` rubric.
+- Every time-sensitive platform, rating, store, or regional-law assertion has a
+  `source-evidence record` from an official current source. Unsupported claims
+  remain `unknown` and legal interpretations go to `legal-compliance`.
 - Every randomized-monetization title also runs `loot-box-jurisdiction`; the
   "In-Game Purchases (Includes Random Items)" descriptor is mandatory.
 - IARC questionnaire answers must be internally consistent and consistent with the

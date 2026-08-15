@@ -88,8 +88,9 @@ pipeline specs include the dependency graph and reproducibility guarantees; CI
 hooks include trigger, check, and pass/fail contract.
 
 ### 5. Delegation
-Emit a `DEV_TASK` to `engineering` per tool (or grouped), carrying the spec as
-payload with the per-engine surface called out. Engineering selects the
+Persist each tool/pipeline spec, then emit a `DEV_TASK` to `engineering` per tool
+(or grouped) with `context_refs` and the per-engine surface called out in
+`instructions`. Engineering selects the
 pair-programmer team and implements.
 
 ### 6. Handback

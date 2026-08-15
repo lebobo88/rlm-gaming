@@ -163,12 +163,12 @@ security gate is **The Sentinel**.
 | **The Arbiter** | `the-arbiter` | gatekeeper | Opus 4.8 | Age ratings (ESRB/PEGI/IARC/CERO/USK), platform cert readiness (TRC/XR/Lotcheck/Steamworks/App review), loot-box jurisdiction, CVAA. |
 | **The Sentinel** | `the-sentinel` | gatekeeper · Cerberus-equiv | Opus 4.8 | Server-authority & fair-play, anti-cheat (EAC/BattlEye/VAC/Ricochet), exploit threat models, gen-AI asset provenance. The venom gate for shipping. |
 
-> See [`/game-roster`](./.claude/commands/game-roster.md) to print this live in a session.
+> See [`/game-roster`](./plugins/rlm-gaming/commands/game-roster.md) to print this live in a session.
 
 ## 6. Skills (16)
 
 Skills are the reusable design playbooks the heads read before composing an
-artifact. All live under [`.claude/skills/`](./.claude/skills/).
+artifact. All live under [`plugins/rlm-gaming/skills/`](./plugins/rlm-gaming/skills/).
 
 | Skill | Primary head(s) | What it produces |
 |---|---|---|
@@ -191,19 +191,19 @@ artifact. All live under [`.claude/skills/`](./.claude/skills/).
 
 ## 7. Commands (9)
 
-Studio slash-commands under [`.claude/commands/`](./.claude/commands/):
+Studio slash-commands under [`plugins/rlm-gaming/commands/`](./plugins/rlm-gaming/commands/):
 
 | Command | What it does |
 |---|---|
-| [`/game-studio`](./.claude/commands/game-studio.md) | Master entry — intake a game goal, recall prior wisdom, route to the right heads/sub-command, synthesize a `DECISION_RECORD` |
-| [`/game-greenlight`](./.claude/commands/game-greenlight.md) | The Director-led greenlight: vision → testable pillars → one-pager → GDD, gated + HITL |
-| [`/game-vertical-slice`](./.claude/commands/game-vertical-slice.md) | Director + Producer orchestrate all five layers for **one** level, then content-lock through QA/perf/accessibility |
-| [`/game-feature`](./.claude/commands/game-feature.md) | A single feature end-to-end — scope → spec → engineering builds → QA/perf/accessibility gates → `DECISION_RECORD` |
-| [`/game-liveops-season`](./.claude/commands/game-liveops-season.md) | The Custodian-led season plan — telemetry + VoC, cadence, economy changes (loot-box gate), asset commissions, store A/B, hotfix runbook |
-| [`/game-balance-pass`](./.claude/commands/game-balance-pass.md) | The Warden + The Playtester run synthetic playtest + balance Monte-Carlo, then route tuning to design heads with an accessibility check |
-| [`/game-cert-review`](./.claude/commands/game-cert-review.md) | The Arbiter-led ratings + platform-cert gate: content inventory, IARC map, feasibility, per-platform TRC, loot-box jurisdiction, submission HITL |
-| [`/game-asset-3d`](./.claude/commands/game-asset-3d.md) | The Sculptor-led 3D asset flow: DCC contract → commission garland blender-model/blender-rig (blender-mcp) → `mesh-topology-budget` + `rig-quality` → C2PA provenance → `DECISION_RECORD` |
-| [`/game-roster`](./.claude/commands/game-roster.md) | Print the Arcade pantheon — all 20 heads by layer with name, slug, tier, charter, and gate. Read-only. |
+| [`/game-studio`](./plugins/rlm-gaming/commands/game-studio.md) | Master entry — intake a game goal, recall prior wisdom, route to the right heads/sub-command, synthesize a `DECISION_RECORD` |
+| [`/game-greenlight`](./plugins/rlm-gaming/commands/game-greenlight.md) | The Director-led greenlight: vision → testable pillars → one-pager → GDD, gated + HITL |
+| [`/game-vertical-slice`](./plugins/rlm-gaming/commands/game-vertical-slice.md) | Director + Producer orchestrate all five layers for **one** level, then content-lock through QA/perf/accessibility |
+| [`/game-feature`](./plugins/rlm-gaming/commands/game-feature.md) | A single feature end-to-end — scope → spec → engineering builds → QA/perf/accessibility gates → `DECISION_RECORD` |
+| [`/game-liveops-season`](./plugins/rlm-gaming/commands/game-liveops-season.md) | The Custodian-led season plan — telemetry + VoC, cadence, economy changes (loot-box gate), asset commissions, store A/B, hotfix runbook |
+| [`/game-balance-pass`](./plugins/rlm-gaming/commands/game-balance-pass.md) | The Warden + The Playtester run synthetic playtest + balance Monte-Carlo, then route tuning to design heads with an accessibility check |
+| [`/game-cert-review`](./plugins/rlm-gaming/commands/game-cert-review.md) | The Arbiter-led ratings + platform-cert gate: content inventory, IARC map, feasibility, per-platform TRC, loot-box jurisdiction, submission HITL |
+| [`/game-asset-3d`](./plugins/rlm-gaming/commands/game-asset-3d.md) | The Sculptor-led 3D asset flow: DCC contract → commission garland blender-model/blender-rig (blender-mcp) → `mesh-topology-budget` + `rig-quality` → C2PA provenance → `DECISION_RECORD` |
+| [`/game-roster`](./plugins/rlm-gaming/commands/game-roster.md) | Print the Arcade pantheon — all 20 heads by layer with name, slug, tier, charter, and gate. Read-only. |
 
 ## 8. Gates & HITL control points
 
@@ -462,7 +462,7 @@ The crown is designed to be adopted in increasing autonomy:
 
 1. **Assisted** — single heads producing one artifact at a time (a GDD, an economy sim, a cert checklist).
 2. **Discipline crews** — mini-pipelines (the Design crew, the Evaluation crew) running together.
-3. **Vertical slice** — The Director + The Producer orchestrate all five layers for **one** level, delegating real code + assets, then content-locking through QA/perf/accessibility. *(See [`/game-vertical-slice`](./.claude/commands/game-vertical-slice.md).)*
+3. **Vertical slice** — The Director + The Producer orchestrate all five layers for **one** level, delegating real code + assets, then content-locking through QA/perf/accessibility. *(See [`/game-vertical-slice`](./plugins/rlm-gaming/commands/game-vertical-slice.md).)*
 4. **Content factory / live-ops** — The Custodian drives semi-autonomous, telemetry-fed season generation within templates + approval gates.
 
 ## 15. License & provenance

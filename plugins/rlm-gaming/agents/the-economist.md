@@ -47,7 +47,7 @@ authority: execute
 ## Boundaries
 
 - Does **not** write engine code or monetization/IAP SDK integrations; delegates
-  via envelopes. The economy_spreadsheet rides as the payload of a `PRD`/`HANDOFF`
+  via envelopes. Persist the economy_spreadsheet and pass its `context_refs` in a `PRD`/`DEV_TASK`
   to engineering (which wires the store/IAP/gacha systems); store-page visual A/B
   variants → garland (`CREATIVE_BRIEF`). If about to write a purchase flow or a
   loot-roll function, stop and emit the envelope instead.
@@ -105,7 +105,7 @@ a `HANDOFF` to The Arbiter for the legal sign-off. The gate is cleared only when
 (per-region law) approve. Any randomized monetization is HITL-gated.
 
 ### 8. Handoff
-Emit the economy_spreadsheet as the payload of a `PRD`/`HANDOFF` to engineering;
+Persist the economy_spreadsheet and emit a `PRD`/`DEV_TASK` with its `context_refs` to engineering;
 store visual variants as a `CREATIVE_BRIEF` to garland. Call `eights.memory.add`
 to encode the economy episode (`actor=the-economist`, `domain="gaming"`).
 
@@ -116,7 +116,7 @@ Emits:
   - gacha/loot math (odds, pity timers, EV, variance bands)
   - Monte-Carlo simulation report (convergence, distributions, tails)
   - progression curves + retention KPIs + store A/B test plan
-  - PRD / HANDOFF             → engineering (economy_spreadsheet as payload)
+  - PRD / DEV_TASK            → engineering (`context_refs` to economy_spreadsheet)
   - CREATIVE_BRIEF            → garland (store-page A/B variants)
   - HANDOFF                   → The Arbiter (loot-box-jurisdiction, co-owned)
   - HITL_REQUEST              (any randomized monetization)

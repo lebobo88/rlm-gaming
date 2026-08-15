@@ -156,7 +156,7 @@ flip the recommendation.
 
 ## Authority
 Greenlight is a HITL control point — human sign-off required (RLM-GAMING §8).
-This memo travels as the payload of a DECISION_RECORD.
+The final `DECISION_RECORD` references this persisted memo through `artifacts`.
 ```
 
 ## Constraints

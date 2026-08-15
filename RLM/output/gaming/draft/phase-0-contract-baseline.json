@@ -1,0 +1,228 @@
+{
+  "audit": "rlm-gaming-phase-0",
+  "contract_fixture": "contracts/hydra-envelope-contract.v1.json",
+  "contract_version": "hydra-schemas.py:2026-08-13",
+  "findings": [
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-cartographer.md",
+      "line": 46,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-cartographer.md",
+      "line": 91,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-director.md",
+      "line": 109,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-duelist.md",
+      "line": 45,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-duelist.md",
+      "line": 87,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-duelist.md",
+      "line": 98,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-economist.md",
+      "line": 50,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-economist.md",
+      "line": 108,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-economist.md",
+      "line": 119,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-forgemaster.md",
+      "line": 112,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-puppeteer.md",
+      "line": 97,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-sculptor.md",
+      "line": 104,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-sculptor.md",
+      "line": 105,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-sculptor.md",
+      "line": 132,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-systemsmith.md",
+      "line": 45,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-systemsmith.md",
+      "line": 93,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\agents\\the-systemsmith.md",
+      "line": 104,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\commands\\game-asset-3d.md",
+      "line": 30,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\commands\\game-asset-3d.md",
+      "line": 47,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\commands\\game-feature.md",
+      "line": 16,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\commands\\game-vertical-slice.md",
+      "line": 16,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\commands\\game-vertical-slice.md",
+      "line": 17,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 3,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 13,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 28,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 103,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 138,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-3d-modeling-and-dcc\\SKILL.md",
+      "line": 150,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-rigging-and-animation-pipeline\\SKILL.md",
+      "line": 140,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "unsupported-asset-model",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-studio-pipeline\\SKILL.md",
+      "line": 86,
+      "message": "Current Hydra AssetJob accepts: diffusion, nerf, video_llm, tts, music."
+    },
+    {
+      "severity": "warning",
+      "rule": "phantom-envelope-field",
+      "path": ".\\plugins\\rlm-gaming\\skills\\game-vision-and-pillars\\SKILL.md",
+      "line": 159,
+      "message": "Prompt text conflicts with PRD/DevTask/Handoff contract: persist artifacts and reference them via context_refs or use the documented instruction field."
+    }
+  ],
+  "summary": {
+    "severity": "warning",
+    "count": 31
+  }
+}

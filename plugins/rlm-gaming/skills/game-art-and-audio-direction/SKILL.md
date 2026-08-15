@@ -88,14 +88,16 @@ verdict: pass | revise(send back to garland with notes) | reject
 ### Template: `ASSET_JOB` brief (to garland)
 ```yaml
 type: ASSET_JOB
+origin_squad: rlm-gaming
 target_squad: garland
+workflow_id: <workflow UUID>
 model_type: diffusion            # diffusion | nerf | video_llm | tts | music
-brief: "Boss concept — 'The Hollow King', 3/4 view, see art_bible.md style refs"
-style_ref: art_bible.md
-platform_tier: current_gen
-budget: { tris: 80000, texture: "2x2K (albedo/ORM)", lods: 4 }
+output_bucket: "rlm-garland/game-assets/hollow-king"
+style_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/art_bible.md", summary: "art bible" }
+context_refs:
+  - { tier: episodic, key: "rlmgaming:output:creative/hollow-king-concept.md", summary: "concept brief and acceptance criteria" }
 provenance_required: true        # garland governance-c2pa signs; non-negotiable
-acceptance: style-similarity gate
 ```
 
 ### Template: audio mix-tier sheet
@@ -122,12 +124,13 @@ voice_budget: { max_voices: 64, per_emitter_limit: 4 }
 ### Template: `SHOT_LIST` (cinematics)
 ```yaml
 type: SHOT_LIST
+origin_squad: rlm-gaming
 target_squad: garland
-sequence: "Reveal trailer — The Hollow King"
+workflow_id: <workflow UUID>
+brief_id: <CREATIVE_BRIEF UUID>
 shots:
-  - { id: 1, desc: "slow push through ruined throne hall", len_s: 4, style_ref: art_bible.md }
-  - { id: 2, desc: "king turns, eyes ignite", len_s: 2, audio: Play_Boss_Music }
-provenance_required: true
+  - { shot_id: "1", description: "slow push through ruined throne hall", camera_angle: wide, duration_sec: 4 }
+  - { shot_id: "2", description: "king turns, eyes ignite", camera_angle: closeup, duration_sec: 2 }
 ```
 
 ## Constraints

@@ -13,13 +13,6 @@ context:
   - "RLM-GAMING.md"
 skills:
   - game-security-and-anticheat
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify The Sentinel evaluated the design/code-delta against the five Arcade venoms (game.client_authority, game.anticheat_absent, game.unsigned_genai_asset, game.pii_telemetry, game.exploit_economy), that any tripped venom produced a one-sentence refusal logged to Kan with requires_human=true, and that no engine code or media was produced inline. Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Sentinel — Game Security & Fair-Play (gatekeeper / Cerberus-equivalent)

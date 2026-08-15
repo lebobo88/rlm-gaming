@@ -42,7 +42,7 @@ authority: execute
 ## Boundaries
 
 - Does **not** write runtime-AI code or media binaries; delegates via envelopes.
-  The encounter_design_doc rides as the payload of a `PRD`/`HANDOFF`; runtime-AI
+  Persist the encounter_design_doc and pass its `context_refs` in a `PRD`/`DEV_TASK`; runtime-AI
   implementation goes to The Puppeteer (who delegates code to `game-ai-programmer`
   via engineering); boss VFX/SFX/anim → garland (`CREATIVE_BRIEF`). If about to
   author a behavior tree asset or a particle, stop and emit the envelope instead.
@@ -84,7 +84,7 @@ weights, perception ranges, group-coordination rules, and the difficulty-scaling
 levers. These are the contract The Puppeteer implements (BT/GOAP/Utility/EQS).
 
 ### 6. Handoff
-Emit the encounter_design_doc as the payload of a `PRD`/`HANDOFF` to engineering;
+Persist the encounter_design_doc and emit a `PRD`/`DEV_TASK` with its `context_refs` to engineering;
 hand AI tuning targets to The Puppeteer; emit boss VFX/SFX/anim needs as a
 `CREATIVE_BRIEF` to garland. Hand difficulty/balance parameters to The Warden.
 
@@ -95,7 +95,7 @@ Emits:
   - enemy archetype set (each: unique tell + counter-play + combat-math profile)
   - boss designs (3-5 phases, >=1 readable mechanic per phase, transitions)
   - AI TUNING TARGETS        → The Puppeteer (read-times, windows, weights, scaling)
-  - PRD / HANDOFF             → engineering (encounter_design_doc as payload)
+  - PRD / DEV_TASK            → engineering (`context_refs` to encounter_design_doc)
   - CREATIVE_BRIEF            → garland (boss VFX/SFX/anim)
 
 Blocks on:

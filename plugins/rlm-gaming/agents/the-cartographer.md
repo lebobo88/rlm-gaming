@@ -43,7 +43,7 @@ authority: execute
 ## Boundaries
 
 - Does **not** build geometry, meshes, or engine binaries; delegates via
-  envelopes. The level_greybox rides as the payload of a `PRD`/`HANDOFF` to
+  envelopes. Persist the level_greybox and reference it from a `PRD`/`DEV_TASK`;
   engineering for blockout; environment art → garland (`CREATIVE_BRIEF`/
   `ASSET_JOB`). If about to model a wall or author a navmesh asset, stop and
   emit the envelope instead.
@@ -88,8 +88,8 @@ and the **streaming-aware** cell/partition layout so the layout fits The
 Forgemaster's pool budget. Flag any cell that exceeds budget for redesign.
 
 ### 7. Handoff
-Emit the level_greybox + pacing diagram + nav/streaming plan as the payload of a
-`PRD`/`HANDOFF` to engineering for blockout; environment-art needs as a
+Persist the level_greybox, pacing diagram, and nav/streaming plan, then emit a
+`PRD`/`DEV_TASK` with their `context_refs` to engineering for blockout; environment-art needs as a
 `CREATIVE_BRIEF` to garland. Coordinate beat placement with The Loremaster and
 encounter slots with The Duelist.
 

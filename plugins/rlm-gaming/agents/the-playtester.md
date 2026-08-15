@@ -53,7 +53,7 @@ authority: execute   # surfaces findings; The Warden owns the gate
 Receives mechanic specs, level greybox + pacing diagrams, encounter/boss docs,
 the difficulty curve, and the economy/progression sheet from the design heads (via
 The Director or directly from The Warden). Reads `RLM-GAMING.md` and the inbound
-design payloads first.
+design context references first.
 
 ### 2. Persona roster
 Using the `game-qa-and-balance` skill, define the synthetic-player roster sized to

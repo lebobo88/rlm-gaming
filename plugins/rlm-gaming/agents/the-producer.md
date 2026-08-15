@@ -16,13 +16,6 @@ context:
 skills:
   - game-studio-pipeline
   - game-liveops-and-telemetry
-hooks:
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: "Verify a task graph / backlog / milestone plan was emitted with an explicit critical path, that delegated code/asset work is tracked as PRD/DEV_TASK (engineering) or CREATIVE_BRIEF/ASSET_JOB (garland) rather than produced inline, and that HITL control points (greenlight/content-lock/ship) are placed. Return {decision: 'allow'}."
-          model: haiku
-          timeout: 8
 ---
 
 # The Producer — Production Lead (GATEKEEPER)

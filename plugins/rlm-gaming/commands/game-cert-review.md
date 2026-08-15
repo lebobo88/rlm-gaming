@@ -10,11 +10,11 @@ model: sonnet
 
 ## Steps
 
-1. **Content inventory** — The Arbiter catalogs rateable content (violence, language, sexual content, gambling/simulated gambling, UGC, data collection).
+1. **Content inventory + evidence** — The Arbiter catalogs rateable content (violence, language, sexual content, gambling/simulated gambling, UGC, data collection) and creates a source-evidence record for every current platform, rating, store, or regional-law claim. An unavailable official source is `unknown`, not an assumption.
 2. **IARC map** — map the inventory through the IARC questionnaire to the participating boards (ESRB / PEGI / USK / ClassInd / GRAC). Note CERO (Japan) / ACB (Australia) as separate submissions. Fire `esrb-pegi-iarc-rating` (owner: The Arbiter, **HITL**).
 3. **Target-rating feasibility** — compare the IARC result to `--target-rating`; flag any content that would breach it and route remediation back to the owning design head.
 4. **Per-platform cert** — for each of `--platforms`, build the cert checklist using each platform's own program: **Sony TRC**, **Microsoft XR/XGSP**, **Nintendo Lotcheck**, **Steamworks** (+ Deck-Verified), **Apple/Google** review. (Note: "TRC" is Sony-specific — do not call Nintendo's process a TRC; Nintendo uses Lotcheck.) Delegate cert-code remediation to `engineering` (`game-cert-team`). Fire `platform-cert-readiness` (owner: The Arbiter, **HITL**; pipeline-internal cert stage).
-5. **Loot-box jurisdiction** — if `--monetized` or any randomized reward, fire `loot-box-jurisdiction` with per-region disclosure/odds requirements (NL, BE, JP/CERO, etc.).
+5. **Loot-box jurisdiction** — if `--monetized` or any randomized reward, fire `loot-box-jurisdiction` with per-region requirements backed by current official sources. Hand off unknown or interpretive legal questions; do not use examples from another region as evidence.
 6. **Escalate** — emit `HANDOFF` to `legal-compliance` for IP clearance, licensed-engine terms, age-rating law, or UGC liability beyond The Arbiter's authority.
 7. **HITL submission** — emit `HITL_REQUEST` for the human submission decision; on approval write the cert `DECISION_RECORD` and `eights.memory.add(domain="gaming")` (record platform gotchas for replay).
 

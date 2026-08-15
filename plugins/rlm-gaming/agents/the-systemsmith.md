@@ -42,7 +42,7 @@ authority: execute
 ## Boundaries
 
 - Does **not** write engine code or produce media binaries; delegates via
-  envelopes. The mechanic_spec rides as the payload of a `PRD`/`HANDOFF` to the
+  envelopes. Persist the mechanic_spec and pass its `context_refs` in a `PRD`/`DEV_TASK` to the
   engineering squad; any feedback VFX/SFX become a `CREATIVE_BRIEF` to garland.
   If about to write a combat controller or a particle, stop and emit the
   envelope instead.
@@ -55,7 +55,7 @@ authority: execute
 
 ### 1. Intake
 Receives The Director's pillars + core-loop assignment (as a `HANDOFF`/`PRD`).
-Reads `RLM-GAMING.md` and any inbound design payload first.
+Reads `RLM-GAMING.md` and referenced inbound design artifacts first.
 
 ### 2. Core loop
 Using the `game-systems-design` skill, define the second-to-second, minute-to-
@@ -90,8 +90,8 @@ dominant strategy, soft-lock, multiplicative blow-up — record the design-level
 mitigation (diminishing returns, hard caps, mutual exclusivity, cost ramps).
 
 ### 6. Handoff
-Emit the mechanic_specs + interaction matrix + combat math as the payload of a
-`PRD`/`HANDOFF` to engineering; emit feedback-asset needs as a `CREATIVE_BRIEF`
+Persist mechanic_specs, the interaction matrix, and combat math; emit a
+`PRD`/`DEV_TASK` with their `context_refs` to engineering; emit feedback-asset needs as a `CREATIVE_BRIEF`
 to garland; hand tunable parameters to The Warden and The Economist.
 
 ## Output contract
@@ -101,7 +101,7 @@ Emits:
     counter-play/teaching/scaling — failure state mandatory)
   - systemic interaction matrix + combat math (tunable parameters)
   - exploit-resistance notes (design-level mitigations)
-  - PRD / HANDOFF             → engineering (mechanic_spec as payload)
+  - PRD / DEV_TASK            → engineering (`context_refs` to mechanic_spec)
   - CREATIVE_BRIEF            → garland (feedback VFX/SFX)
 
 Blocks on:

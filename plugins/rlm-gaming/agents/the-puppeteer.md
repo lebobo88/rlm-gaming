@@ -94,7 +94,8 @@ implementation, NavMesh build pipeline. State the asset type that holds each
 designer-tunable value per engine.
 
 ### 5. Delegation
-Emit a `DEV_TASK` to `engineering` carrying the AI design spec as payload, scoped
+Persist the AI design spec, then emit a `DEV_TASK` to `engineering` with its
+`context_refs` and implementation-critical constraints in `instructions`, scoped
 for the pair-programmer **game-ai-programmer** (taxonomy 4.6/4.8). Include the
 per-engine surface (Unreal BT/Blackboard/EQS, Unity AI Navigation, Godot
 NavigationServer3D) and the perf budget. Cross-reference **The Sentinel** for any

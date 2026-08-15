@@ -1,0 +1,28 @@
+{
+  "contract_version": "hydra-schemas.py:2026-08-13-phase-1",
+  "source": "C:/AiAppDeployments/Hydra/hydra_core/schemas.py",
+  "notes": "Phase 0 snapshot of the live downstream contract. It is intentionally a test fixture, not a replacement for Hydra schema ownership.",
+  "prd": {
+    "required": ["type", "origin_squad", "workflow_id", "source_goal_id", "summary"],
+    "artifact_transport": "context_refs"
+  },
+  "dev_task": {
+    "required": ["type", "origin_squad", "workflow_id", "owner", "repo", "branch", "instructions"],
+    "owner": ["frontend", "backend", "fullstack", "devops", "data"],
+    "artifact_transport": "context_refs and instructions"
+  },
+  "creative_brief": {
+    "required": ["type", "origin_squad", "workflow_id", "campaign_id", "objective", "target_audience"]
+  },
+  "asset_job": {
+    "required": ["type", "origin_squad", "workflow_id", "model_type", "output_bucket"],
+    "model_type": ["diffusion", "nerf", "video_llm", "tts", "music", "mesh", "rig"],
+    "style_reference_transport": "style_refs: MemoryRef[]",
+    "contract_transport": "context_refs: MemoryRef[]",
+    "provenance_required": "boolean"
+  },
+  "handoff": {
+    "required": ["type", "origin_squad", "workflow_id", "payload_envelope_id"],
+    "artifact_transport": "payload_envelope_id"
+  }
+}
